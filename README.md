@@ -1,5 +1,5 @@
 # Natural Selection Simulation
-In this simulation, I ran an experiment to test how test subjects would survive natural selection and which attributes would emerge as the prominant. 
+In this simulation, I ran an experiment to test how test subjects would survive natural selection and which attributes would emerge as the prominant. The fully runable code will be in main.py, however, I will package it to EXE eventually.
 
 ## Code Thought Processes
 
