@@ -17,7 +17,7 @@ class testsubject_class():
 
 # Generate Properties
 def char_generate():
-    local_age = 0 # ref age factor which determines survivability (0 is best)
+    local_age = random.randint(1,100) # ref age factor which determines survivability (0 is best)
     local_gender = random.randint(0,1) # 0M 1F
     local_attractivelvl = random.randint(0,8) # determines reproduction level
     local_strength = random.randint(0,8) # ref strength factor which determines survivability (0 is best) 
@@ -27,6 +27,7 @@ def char_generate():
 
     local_charstr = "" # Clear
     local_charstr = f"{local_age}~{local_gender}~{local_attractivelvl}~{local_strength}~{local_eyesight}~{local_intuition}~{local_survivability}"
+    print(local_charstr)
     return local_charstr
 
 # Create all the test subjects.
@@ -38,11 +39,19 @@ for subjectcounter in range(0, subject_count):
 # Create Simulation
 for cur_year in range(simulation_years):
     reader_testsubjects = [] # This is debug to split the subject for reader. We include it in the loop to reset the reader everytime.
-    for subjectlen in range(len(testsubjects)): reader_testsubjects.append(testsubjects[subjectlen].split("/"))
+    for subjectlen in range(len(testsubjects)):
+        reader_testsubjects.append(testsubjects[subjectlen].split("/"))
+
     reader_attributes = [] # This attribute reader reads the attributes.
-    for attributelen in range(len(reader_testsubjects)): reader_attributes.append((reader_testsubjects[attributelen][1]).split("~"))
-    # This sorts into id 0 (which is 1) to finish id. You get the ID number from the list number. We have removed the +1 for this reason. Resulting in id0
-    for agechangelen in range(len(reader_attributes)):
-        changeyear = str(int(reader_attributes[agechangelen][0]) + 1) # Increases the age of every person by one.
-        reader_attributes[agechangelen][0] = changeyear # weird bug with only increasing once in the entire year loop. fix later :(
-    print(f"Year: {cur_year}: {reader_attributes[0][0]}")
+    for attributelen in range(len(reader_testsubjects)): 
+        reader_attributes.append((reader_testsubjects[attributelen][1]).split("~"))
+    
+    # This section should change the age attribute everytime the year as passed
+    for attributelist in range (len(reader_attributes)):
+        # reader_attributes[attributelist][0] = str(int(reader_attributes[attributelist][0]) + 1)
+        debugage = int(reader_attributes[attributelist][0]) + 1
+        reader_attributes[attributelist][0] = str(debugage)
+        print(debugage)
+
+    # Return the age of the first test subject everytime for testing purposes.
+    print(f"Year: {cur_year}: {reader_attributes[0][0]}") 
