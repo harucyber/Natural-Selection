@@ -47,11 +47,8 @@ for cur_year in range(simulation_years):
         reader_attributes.append((reader_testsubjects[attributelen][1]).split("~"))
     
     # This section should change the age attribute everytime the year as passed
-    for attributelist in range (len(reader_attributes)):
-        # reader_attributes[attributelist][0] = str(int(reader_attributes[attributelist][0]) + 1)
-        debugage = int(reader_attributes[attributelist][0]) + 1
-        reader_attributes[attributelist][0] = str(debugage)
-        print(debugage)
+
 
     # Return the age of the first test subject everytime for testing purposes.
     print(f"Year: {cur_year}: {reader_attributes[0][0]}") 
+    print(reader_attributes)
