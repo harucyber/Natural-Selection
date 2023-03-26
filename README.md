@@ -103,3 +103,60 @@ testsubjects.append(testsubject_class(subjectcounter, char_generate()).returnstr
 ```
 
 ### v0.3
+I took a week break to do some other un-code related stuff, but now I am back to fix my issue. Previously before leaving, I've tried to integrate our age addition system per year to run the calculation. We can solve this in many steps:
+
+1. Decompile the string ("no1, 0, 1, 8, 4, 3...")
+2. Increase Age Factor by 1 ("no1, 1, 1, 8, 4, 3...")
+3. Iterate this by N years (simulation years) -> ("no1, 1+n, 1, 8, 4, 3...)
+4. Recompile the string to use **recursive function** to go to step 1 through simulation years.
+
+This isn't as simple as it seems though. I am gonna use nested arrays to get this to work. We use some code to split this:
+```lua
+["no1, 1, 3, 4, 5...", "no2, 1, 3, 5, 7..." ...]
+```
+to
+```lua
+[["1", "3", "4", ...], ["2", "5", "4", "9"...]]
+```
+
+These nested loops allow us to change one function. Firstly though, we need to split the loops. The solution we came up with is in test.py (which is going to be deleted in this update, but you may go back to vertical integration updates.)
+
+```py
+for years in range(10):
+    # Unpacking and Edit
+    for a in range(len(testsubjects)):
+        testsubjects_alpha.append(testsubjects[a].split("/"))
+    for b in range(len(testsubjects_alpha)):
+        testsubjects_beta.append(testsubjects_alpha[b][1].split("~"))
+```
+
+Now, we have created that second nested loop. However, we need to add that by one. This is the solution to that issue. 
+
+```py
+    for c in range(len(testsubjects_beta)):
+        testsubjects_reader = testsubjects_beta[c][0]
+        testsubjects_reader = str(int(testsubjects_reader) + 1)
+        testsubjects_beta[c][0] = testsubjects_reader
+```
+
+However, this creates a new issue of the array looking something like this:
+
+```lua
+[[nested1], [nested2] ... [nestedfinal], [nested1], [nested2] ...]
+```
+This is not ideal. We need to remove that. As a result, it took me about 7 days to figure out that the **recursive function** is not actually taking the recursive output. 
+
+We fix that with an recompiler, which was the easiest part of the entire code because it was just a few copy pastes.
+
+```py
+# Recompile
+for z in range(subject_count):
+            testsubjects[z] = f"no{z}/{testsubjects_split2[z][0]}/{testsubjects_split2[z][1]}/{testsubjects_split2[z][2]}/{testsubjects_split2[z][3]}/{testsubjects_split2[z][4]}/{testsubjects_split2[z][5]}/{testsubjects_split2[z][6]}"
+```
+
+Eitherway, we have a recursive function. This is why you should pay attention in data structures and algorithms.
+
+I will try to get everything else to change by age as well in the next update.
+
+### v0.4
+
