@@ -36,13 +36,4 @@ for subjectcounter in range(0, subject_count):
 
 
 # Create Simulation
-for cur_year in range(simulation_years):
-    reader_testsubjects = [] # This is debug to split the subject for reader. We include it in the loop to reset the reader everytime.
-    for subjectlen in range(len(testsubjects)): reader_testsubjects.append(testsubjects[subjectlen].split("/"))
-    reader_attributes = [] # This attribute reader reads the attributes.
-    for attributelen in range(len(reader_testsubjects)): reader_attributes.append((reader_testsubjects[attributelen][1]).split("~"))
-    # This sorts into id 0 (which is 1) to finish id. You get the ID number from the list number. We have removed the +1 for this reason. Resulting in id0
-    for agechangelen in range(len(reader_attributes)):
-        changeyear = str(int(reader_attributes[agechangelen][0]) + 1) # Increases the age of every person by one.
-        reader_attributes[agechangelen][0] = changeyear # weird bug with only increasing once in the entire year loop. fix later :(
-    print(f"Year: {cur_year}: {reader_attributes[0][0]}")
+# This is for Rim use. Use string splitting to determine factor, then use regeX to subsitute.
