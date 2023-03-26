@@ -17,7 +17,7 @@ class testsubject_class():
 
 # Generate Properties
 def char_generate():
-    local_age = random.randint(1,100) # ref age factor which determines survivability (0 is best)
+    local_age = 0 # ref age factor which determines survivability (0 is best)
     local_gender = random.randint(0,1) # 0M 1F
     local_attractivelvl = random.randint(0,8) # determines reproduction level
     local_strength = random.randint(0,8) # ref strength factor which determines survivability (0 is best) 
@@ -34,17 +34,23 @@ testsubjects = []
 for subjectcounter in range(0, subject_count):    
     testsubjects.append(testsubject_class(subjectcounter, char_generate()).returnstr())
 
+print(testsubjects)
 
 # Create Simulation
 testsubjects_split1 = []
 testsubjects_split2 = []
-for b in range(simulation_years):
-    for a in range(len(testsubjects)):
-        testsubjects_split1.append(testsubjects[a].split('/'))
-    for d in range(len(testsubjects_split1)):
-        testsubjects_split2.append(testsubjects_split1[d][1].split('~'))
-    for c in range (len(testsubjects_split2)):
-        testsubjects_split2[c][0] = str(int(testsubjects_split2[c][0]) + 1)
-    print(f"Year {b}")
-    print(testsubjects_split2)
 
+for b in range(simulation_years):
+    if b != 9999: # Buffer
+        # Decompile
+        for a in range(len(testsubjects)):
+            testsubjects_split1.append(testsubjects[a].split('/'))
+            testsubjects_split2.append(testsubjects_split1[a][1].split('~'))
+        for c in range (len(testsubjects_split2)):
+            testsubjects_split2[c][0] = str(int(testsubjects_split2[c][0]) + 1)
+
+        # Recompile
+        for z in range(subject_count):
+            testsubjects[z] = f"no{z}/{testsubjects_split2[z][0]}/{testsubjects_split2[z][1]}/{testsubjects_split2[z][2]}/{testsubjects_split2[z][3]}/{testsubjects_split2[z][4]}/{testsubjects_split2[z][5]}/{testsubjects_split2[z][6]}"
+
+print(testsubjects)
