@@ -47,9 +47,8 @@ for cur_year in range(simulation_years):
         reader_attributes.append((reader_testsubjects[attributelen][1]).split("~"))
     
     # This section should change the age attribute everytime the year as passed, worked in test, not vertical integration
-    for b in range(len(reader_attributes)):
-        reader_attributes[b][0] = str(int(reader_attributes[b][0]) + 1)
-    print(reader_attributes[0][0])
+    # This has failed vertical integration. Will try again on test.py
 
     # Return the age of the first test subject everytime for testing purposes.
     print(f"Year: {cur_year}: {reader_attributes[0][0]}") 
+    print(testsubjects)
