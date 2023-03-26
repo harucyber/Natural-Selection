@@ -54,3 +54,4 @@ for b in range(simulation_years):
             testsubjects[z] = f"no{z}/{testsubjects_split2[z][0]}/{testsubjects_split2[z][1]}/{testsubjects_split2[z][2]}/{testsubjects_split2[z][3]}/{testsubjects_split2[z][4]}/{testsubjects_split2[z][5]}/{testsubjects_split2[z][6]}"
 
 print(testsubjects)
+# This should be removed in next update (dev purposes)
