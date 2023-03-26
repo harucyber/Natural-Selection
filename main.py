@@ -27,7 +27,6 @@ def char_generate():
 
     local_charstr = "" # Clear
     local_charstr = f"{local_age}~{local_gender}~{local_attractivelvl}~{local_strength}~{local_eyesight}~{local_intuition}~{local_survivability}"
-    print(local_charstr)
     return local_charstr
 
 # Create all the test subjects.
@@ -37,4 +36,14 @@ for subjectcounter in range(0, subject_count):
 
 
 # Create Simulation
-# This is for Rim use. Use string splitting to determine factor, then use regeX to subsitute.
+testsubjects_split1 = []
+testsubjects_split2 = []
+for b in range(simulation_years):
+    for a in range(len(testsubjects)):
+        testsubjects_split1.append(testsubjects[a].split('/'))
+        testsubjects_split2.append(testsubjects_split1[a][1].split('~'))
+    for c in range (len(testsubjects_split2)):
+        testsubjects_split2[c][0] = str(int(testsubjects_split2[c][0]) + 1)
+    print(f"Year {b}")
+    print(testsubjects_split2)
+
