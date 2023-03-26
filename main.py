@@ -37,18 +37,4 @@ for subjectcounter in range(0, subject_count):
 
 
 # Create Simulation
-for cur_year in range(simulation_years):
-    reader_testsubjects = [] # This is debug to split the subject for reader. We include it in the loop to reset the reader everytime.
-    for subjectlen in range(len(testsubjects)):
-        reader_testsubjects.append(testsubjects[subjectlen].split("/"))
-
-    reader_attributes = [] # This attribute reader reads the attributes.
-    for attributelen in range(len(reader_testsubjects)): 
-        reader_attributes.append((reader_testsubjects[attributelen][1]).split("~"))
-    
-    # This section should change the age attribute everytime the year as passed, worked in test, not vertical integration
-    # This has failed vertical integration. Will try again on test.py
-
-    # Return the age of the first test subject everytime for testing purposes.
-    print(f"Year: {cur_year}: {reader_attributes[0][0]}") 
-    print(testsubjects)
+# This is for Rim use. Use string splitting to determine factor, then use regeX to subsitute.
