@@ -5,7 +5,7 @@ import json
 
 # These settings you can modify to change how this simulation runs.
 subject_count = 10
-simulation_years = 100
+simulation_years = 5
 
 # Create Test-Subject
 class testsubject_class():
@@ -41,7 +41,8 @@ testsubjects_split2 = []
 for b in range(simulation_years):
     for a in range(len(testsubjects)):
         testsubjects_split1.append(testsubjects[a].split('/'))
-        testsubjects_split2.append(testsubjects_split1[a][1].split('~'))
+    for d in range(len(testsubjects_split1)):
+        testsubjects_split2.append(testsubjects_split1[d][1].split('~'))
     for c in range (len(testsubjects_split2)):
         testsubjects_split2[c][0] = str(int(testsubjects_split2[c][0]) + 1)
     print(f"Year {b}")
