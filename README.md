@@ -133,10 +133,10 @@ for years in range(10):
 Now, we have created that second nested loop. However, we need to add that by one. This is the solution to that issue. 
 
 ```py
-    for c in range(len(testsubjects_beta)):
-        testsubjects_reader = testsubjects_beta[c][0]
-        testsubjects_reader = str(int(testsubjects_reader) + 1)
-        testsubjects_beta[c][0] = testsubjects_reader
+for c in range(len(testsubjects_beta)):
+    testsubjects_reader = testsubjects_beta[c][0]
+    testsubjects_reader = str(int(testsubjects_reader) + 1)
+    testsubjects_beta[c][0] = testsubjects_reader
 ```
 
 However, this creates a new issue of the array looking something like this:
