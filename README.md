@@ -2,7 +2,7 @@
 In this simulation, I ran an experiment to test how test subjects would survive natural selection and which attributes would emerge as the prominant. The fully runable code will be in main.py, however, I will package it to EXE eventually.
 
 This experiment uses main factors from this article:
-[Kahn Academy Natural Selection (AP BIO)](https://www.khanacademy.org/science/ap-biology/natural-selection/artificial-selection/a/evolution-natural-selection-and-human-selection)
+[Khan Academy Natural Selection (AP BIO)](https://www.khanacademy.org/science/ap-biology/natural-selection/artificial-selection/a/evolution-natural-selection-and-human-selection)
 
 ## Code Thought Processes
 
@@ -133,10 +133,10 @@ for years in range(10):
 Now, we have created that second nested loop. However, we need to add that by one. This is the solution to that issue. 
 
 ```py
-    for c in range(len(testsubjects_beta)):
-        testsubjects_reader = testsubjects_beta[c][0]
-        testsubjects_reader = str(int(testsubjects_reader) + 1)
-        testsubjects_beta[c][0] = testsubjects_reader
+for c in range(len(testsubjects_beta)):
+    testsubjects_reader = testsubjects_beta[c][0]
+    testsubjects_reader = str(int(testsubjects_reader) + 1)
+    testsubjects_beta[c][0] = testsubjects_reader
 ```
 
 However, this creates a new issue of the array looking something like this:
